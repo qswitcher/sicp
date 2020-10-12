@@ -1,0 +1,31 @@
+By induction assume 
+
+Fib(n) = (phi^n - rho^n)/5.
+
+1. base case
+Fib(1) = sqrt(5)/sqrt(5) = 1
+
+2. Induct case, assume holds for Fib(n)
+Now compute
+Fib(n+1) = Fib(n) + Fib(n - 1)
+by induct hypothesis
+Fib(n+1) = (phi^n - rho^n)/sqrt(5) + (phi^(n - 1) - rho^(n - 1))/sqrt(5)
+         = (phi^n - rho^n + phi^(n - 1) - rho^(n - 1))/sqrt(5)
+         = (phi^(n + 1)*(1/phi + 1/phi^2) - rho^(n+1)/(1/rho+1/rho^2))/sqrt(5)
+
+2/(1 + sqrt(5)) + 4/(6 + 2*sqrt(5)) = 2/(1 + sqrt(5)) + 2/(3 + sqrt(5))
+
+2*(3 + sqrt(5)) + 2*(1 + sqrt(5))
+--
+8 + 4*sqrt(5)
+
+(8 + 4*sqrt(5))/(8 + 4*sqrt(5)) == 1
+
+
+2/(1 - sqrt(5)) + 4/(6 - 2*sqrt(5)) = 2/(1 - sqrt(5)) + 2/(3 - sqrt(5))
+
+2*(3 - sqrt(5)) + 2*(1 - sqrt(5)) = 8 - 4*sqrt(5)
+--
+8 - 4*sqrt(5)
+
+QED
