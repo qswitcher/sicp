@@ -1,0 +1,4 @@
+By not using square, instead of
+1 + 1/2 + 1/4 + ... 1/n  = log(n)
+it's
+1 + 2*1/2 + 4*1/4 ... n*1/n = n
