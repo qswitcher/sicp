@@ -1,0 +1,2 @@
+We need `expmod`, otherwise we'll generate huge intermediate resultls that will
+result in either overflow or computationally expensive arithematic for very larger numbers.
