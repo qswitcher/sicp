@@ -1,0 +1,49 @@
+a. We've extracted each type of expression into a tag. We can't do the same to number and variable because there's not an associated operator to use as a type in our current implementation. 
+
+#lang racket
+(define (run-test)
+  (define (deriv exp var)
+    (cond ((number? exp) 0)
+          ((variable? exp) (if (same-variable? exp var) 1 0))
+          (else ((get 'deriv (operator exp)) (operands exp)
+                                             var))))
+  (define (operator exp) (car exp))
+  (define (operands exp) (cdr exp))
+
+  (define (install-deriv-packages)
+    (put 'deriv '+
+         (lambda (ops var) (make-sum (deriv (addend exp) var)
+                                     (deriv (augend exp) var))))
+    (put 'deriv '*
+         (lambda (ops var) (make-sum
+                            (make-product (multiplier exp)
+                                          (deriv (multiplicand exp) var))
+                            (make-product (deriv (multiplier exp) var)
+                                          (multiplicand exp)))))
+    'done
+    )
+
+  ; c
+  (define (deriv exp var)
+    (cond ((number? exp) 0)
+          ((variable? exp) (if (same-variable? exp var) 1 0))
+          (else ((get (operator exp) 'deriv) (operands exp)
+                                             var))))
+  (define (operator exp) (car exp))
+  (define (operands exp) (cdr exp))
+
+  (define (install-deriv-packages)
+    (put '+ 'deriv
+         (lambda (ops var) (make-sum (deriv (addend exp) var)
+                                     (deriv (augend exp) var))))
+    (put '* 'deriv
+         (lambda (ops var) (make-sum
+                            (make-product (multiplier exp)
+                                          (deriv (multiplicand exp) var))
+                            (make-product (deriv (multiplier exp) var)
+                                          (multiplicand exp)))))
+    'done
+    )
+
+   
+  )(run-test)
