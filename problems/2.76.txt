@@ -1,0 +1,3 @@
+In data-directed passing, each new data-type requires an installation script, registering the operation implementation with the type registry. Adding a new type is easy, just supply the implementations. However, adding new operations is expensive, each type installation script needs to be update.data
+
+For message-passing, the complexity lies in the dispatcher object. This style is useful when we expect to add new operations, but not new data types.
