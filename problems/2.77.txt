@@ -1,0 +1,8 @@
+The selectors have to be re-exported from the rectangular and polar package.
+
+apply-generic looks up
+'magnitude '(complex)   - the method within the complex package
+'magnitude '(rectangular)  - the method within the rectangular package
+// sum is performed 
+so it's called twice
+
